@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIScrollView *pageScrollView;
 @property (nonatomic, assign) NSInteger currentPageIndex;
 @property (nonatomic, strong) NSArray *connectedButtons;
+
 @end
 
 @implementation MBXPageViewController
@@ -181,6 +182,7 @@
         {
             _pageScrollView = (UIScrollView *)view;
             _pageScrollView.delegate = self;
+			_pageScrollView.scrollEnabled = _allowPageToScroll;
         }
     }
 }
@@ -254,16 +256,16 @@
     NSInteger tempIndex = _currentPageIndex;
     // Check to see which way are you going (Left -> Right or Right -> Left)
     if (destination > tempIndex) {
-        for (int i = (int)tempIndex+1; i<=destination; i++) {
-            [self setPageControllerForIndex:i direction:UIPageViewControllerNavigationDirectionForward currentMBXViewController:weakSelf destionation:destination];
-        }
+//        for (int i = (int)tempIndex+1; i<=destination; i++) {
+            [self setPageControllerForIndex:destination direction:UIPageViewControllerNavigationDirectionForward currentMBXViewController:weakSelf destionation:destination];
+//        }
     }
     
     // Right -> Left
     else if (destination < tempIndex) {
-        for (int i = (int)tempIndex-1; i >= destination; i--) {
-            [self setPageControllerForIndex:i direction:UIPageViewControllerNavigationDirectionReverse currentMBXViewController:weakSelf destionation:destination];
-        }
+//        for (int i = (int)tempIndex-1; i >= destination; i--) {
+            [self setPageControllerForIndex:destination direction:UIPageViewControllerNavigationDirectionReverse currentMBXViewController:weakSelf destionation:destination];
+//        }
     }
 }
 
@@ -289,7 +291,7 @@
 - (void)updateCurrentPageIndex:(NSInteger)newIndex
 {
     _currentPageIndex = newIndex;
-    [self MBXPageChangedToIndex:_currentPageIndex];
+//    [self MBXPageChangedToIndex:_currentPageIndex];
 }
 
 // Delegate

@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, MBXPageMode) {
 
 @property (nonatomic, assign) id<MBXPageControllerDataSource>   MBXDataSource;
 @property (nonatomic, assign) id<MBXPageControllerDataDelegate> MBXDataDelegate;
+@property (nonatomic, readwrite) BOOL allowPageToScroll;
 
 @property (nonatomic, assign) MBXPageMode                           pageMode;     // This selects the mode of the PageViewController
 
